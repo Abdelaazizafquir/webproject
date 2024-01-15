@@ -1,0 +1,43 @@
+.user-management-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.user-management-title {
+  color: #007bff;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #ced4da;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-role-select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.link-home {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link-home:hover {
+  text-decoration: underline;
+}

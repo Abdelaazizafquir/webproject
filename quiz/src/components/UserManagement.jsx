@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../style/users.css';
 
 function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -25,7 +26,6 @@ function UserManagement() {
         newRole,
       });
 
-      // Update the local state or refetch users
       fetchUsers();
     } catch (error) {
       console.error('Failed to update user role', error);
@@ -37,35 +37,45 @@ function UserManagement() {
     if (storedSession) {
       const user = JSON.parse(storedSession).user;
       if (user.role !== 'admin') {
-        // Redirect to home if the user is not an admin
         window.location.href = '/';
       }
     } else {
-      // Redirect to home if there is no user session
       window.location.href = '/';
     }
   }, []);
 
   return (
-    <div>
-     <li><Link to="/">Home</Link></li>
-      <h2>User Management</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user._id}>
-            {user.username} - {user.role}
-            <div>
-              <label>Select Role:</label>
-              <select onChange={(e) => updateUserRole(user._id, e.target.value)}>
-                <option value="student">Student</option>
-                <option value="professeur">professeur</option>
-                <option value="admin">admin</option>
-
-              </select>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <div className="user-management-container">
+      <li><Link to="/" className="link-home">Home</Link></li>
+      <h2 className="user-management-title">User Management</h2>
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user._id}>
+              <td>{user.username}</td>
+              <td>{user.role}</td>
+              <td>
+                <label>Select Role:</label>
+                <select
+                  className="user-role-select"
+                  onChange={(e) => updateUserRole(user._id, e.target.value)}
+                >
+                  <option value="student">Student</option>
+                  <option value="professeur">professeur</option>
+                  <option value="admin">admin</option>
+                </select>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

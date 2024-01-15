@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../style/home.css'; // Import your CSS file
+import '../style/home.css'; 
 
 function Home({ onLogout }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,7 +41,7 @@ function Home({ onLogout }) {
   };
 
   return (
-    <div className="home-container"> {/* Added class name here */}
+    <div className="home-container">
       <h2>Home Page</h2>
       <nav>
         <ul>
@@ -51,19 +51,16 @@ function Home({ onLogout }) {
           {isLoggedIn && <li><Link to="#" onClick={handleLogout}>Logout</Link></li>}
           {isLoggedIn && (userRole === 'professeur' || userRole === 'admin') && <li><Link to="/createQuiz">Add Quiz</Link></li>}
           {isLoggedIn && userRole === 'admin' && <li><Link to="/admin">Users</Link></li>}
-
         </ul>
       </nav>
       {isLoggedIn ? (
-        <>
-          <ul>
-            {quizzes.map((quiz) => (
-              <li key={quiz._id}>
-                <Link to={`/quiz/${quiz._id}`}>{quiz.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </>
+        <div className="quiz-cards-container">
+          {quizzes.map((quiz) => (
+            <div key={quiz._id} className="quiz-card">
+              <Link to={`/quiz/${quiz._id}`}>{quiz.title}</Link>
+            </div>
+          ))}
+        </div>
       ) : (
         <p>Please login first.</p>
       )}

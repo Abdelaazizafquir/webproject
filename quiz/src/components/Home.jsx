@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../style/home.css'; 
 
-function Home({ onLogout }) {
+function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const [quizzes, setQuizzes] = useState([]);

@@ -17,8 +17,6 @@ function App() {
         <Route path="/quiz/:id" element={<Quiz />} />
         <Route path="/createQuiz" element={<Admin />} />
         <Route path="/admin" element={<UserManagement />} />
-
-        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );
